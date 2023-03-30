@@ -13,15 +13,26 @@ import initFetchAnimais from "./fetch-animais.js";
 const menuSmooth = smoothMenu('[data-menu="list"] a[href^="#"]');
 menuSmooth.init();
 
-const accordion = initAccordionList("[data-anime='accordion'] dt", "[data-anime='accordion'] dd");
-accordion.init();
+const accordionList = initAccordionList(
+  "[data-anime='accordion'] dt",
+  "[data-anime='accordion'] dd"
+);
+accordionList.init();
 
-const tabMenu = initTabMenu("[data-tab='menu'] img", "[data-tab='content'] div");
+const tabMenu = initTabMenu(
+  "[data-tab='menu'] img",
+  "[data-tab='content'] div"
+);
 tabMenu.init();
 
+const modal = initModal(
+  '[data-modal="abrir"]',
+  '[data-modal="fechar"]',
+  '[data-modal="container"]'
+);
+modal.init();
+
 animarAoScroll();
-initTabMenu();
-initModal();
 initToolTip();
 intiDropDownMenu();
 initMenuMobile();

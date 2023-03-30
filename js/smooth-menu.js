@@ -1,6 +1,7 @@
 export default function smoothMenu(links) {
   const linkInternos = document.querySelectorAll(links);
 
+  // Adiciona o efeito de smooth ao clicar no link
   function smoothClick(event) {
     event.preventDefault();
     const href = event.currentTarget.getAttribute("href");
@@ -12,6 +13,7 @@ export default function smoothMenu(links) {
     });
   }
 
+  // Adiciona o evento aos links
   function addLinkEvent() {
     if (linkInternos.length) {
       linkInternos.forEach((item) => {
@@ -20,11 +22,14 @@ export default function smoothMenu(links) {
     }
   }
 
+  // Inicia a função
   function init() {
     addLinkEvent();
   }
 
   return {
     init,
+    smoothClick,
+    addLinkEvent,
   };
 }
