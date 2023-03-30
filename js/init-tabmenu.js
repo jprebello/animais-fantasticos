@@ -29,5 +29,7 @@ export default function initTabMenu(menu, content) {
 
   return {
     init,
+    activeTab,
+    addTabEvent,
   };
 }
