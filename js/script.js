@@ -16,6 +16,9 @@ menuSmooth.init();
 const accordion = initAccordionList("[data-anime='accordion'] dt", "[data-anime='accordion'] dd");
 accordion.init();
 
+const tabMenu = initTabMenu("[data-tab='menu'] img", "[data-tab='content'] div");
+tabMenu.init();
+
 animarAoScroll();
 initTabMenu();
 initModal();
