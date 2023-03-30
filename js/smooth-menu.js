@@ -1,7 +1,5 @@
-export default function smoothMenu() {
-  const linkInternos = document.querySelectorAll(
-    '[data-menu="smooth"] a[href^="#"]'
-  );
+export default function smoothMenu(links) {
+  const linkInternos = document.querySelectorAll(links);
 
   function smoothClick(event) {
     event.preventDefault();
@@ -14,9 +12,19 @@ export default function smoothMenu() {
     });
   }
 
-  if (linkInternos.length) {
-    linkInternos.forEach((item) => {
-      item.addEventListener("click", smoothClick);
-    });
+  function addLinkEvent() {
+    if (linkInternos.length) {
+      linkInternos.forEach((item) => {
+        item.addEventListener("click", smoothClick);
+      });
+    }
   }
+
+  function init() {
+    addLinkEvent();
+  }
+
+  return {
+    init,
+  };
 }

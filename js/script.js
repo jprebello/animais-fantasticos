@@ -10,10 +10,12 @@ import initFuncionamento from "./funcionamento.js";
 import initFetchBitcoin from "./fetch-bitcoin.js";
 import initFetchAnimais from "./fetch-animais.js";
 
+const menuSmooth = smoothMenu('[data-menu="list"] a[href^="#"]');
+menuSmooth.init();
+
 initAccordionList();
 animarAoScroll();
 initTabMenu();
-smoothMenu();
 initModal();
 initToolTip();
 intiDropDownMenu();
