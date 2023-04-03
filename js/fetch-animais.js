@@ -13,7 +13,8 @@ export default function initFetchAnimais() {
     animaisJson.forEach((animal) => {
       createAnimal(animal);
     });
-    initAnimaNumeros();
+    const animaNumeros = initAnimaNumeros("[data-numero]", ".numeros", "animar");
+    animaNumeros.init();
   }
 
   fetchAnimais("../animais-api.json");
