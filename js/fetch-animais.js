@@ -17,5 +17,5 @@ export default function initFetchAnimais() {
     animaNumeros.init();
   }
 
-  fetchAnimais("../animais-api.json");
+  fetchAnimais("./animais-api.json");
 }
