@@ -1,22 +1,43 @@
-export default function animarAoScroll() {
-  const sections = document.querySelectorAll("[data-anime='scroll']");
+export default function animarAoScroll(sessoes) {
+  const sections = document.querySelectorAll(sessoes);
   const windowMetade = window.innerHeight * 0.6;
 
-  function animaScroll() {
-    sections.forEach((item) => {
-      const sectionTop = item.getBoundingClientRect().top;
-      const isSectionVisible = sectionTop - windowMetade < 0;
-      if (isSectionVisible) {
-        item.classList.add("animar");
-      } else if (item.classList.contains("animar")) {
-        item.classList.remove("animar");
+  // Retorna um objeto com a sessão e sua distancia do topo da página - 60% da vh
+  function getDistance() {
+    const distance = [...sections].map((section) => {
+      const offset = section.offsetTop;
+      return {
+        element: section,
+        offset: Math.floor(offset - windowMetade),
+      };
+    });
+    return distance;
+  }
+
+  const distance = getDistance();
+
+  // Compara a distancia entre o offsettop da sessão e o quanto o scroll da página desceu, aplicando a animação
+  function checkDistance() {
+    distance.forEach((item) => {
+      if (window.pageYOffset > item.offset) {
+        item.element.classList.add("animar");
+      } else if (item.element.classList.contains("animar")) {
+        item.element.classList.remove("animar");
       }
     });
   }
 
-  if (sections.length) {
-    animaScroll();
-
-    window.addEventListener("scroll", animaScroll);
+  // Ativa função
+  function init() {
+    if (sections.length) {
+      checkDistance();
+      window.addEventListener("scroll", checkDistance);
+    }
   }
+
+  return {
+    init,
+    getDistance,
+    checkDistance,
+  };
 }
