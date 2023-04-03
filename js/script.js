@@ -38,8 +38,11 @@ tooltip.init();
 const fetchAnimais = initFetchAnimais("./animais-api.json");
 fetchAnimais.init();
 
+const fetchBitcoin = initFetchBitcoin("https://blockchain.info/ticker", ".btc-preco");
+fetchBitcoin.init();
+
 animarAoScroll();
 intiDropDownMenu();
 initMenuMobile();
 initFuncionamento();
-initFetchBitcoin();
+
