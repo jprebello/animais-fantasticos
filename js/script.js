@@ -35,9 +35,11 @@ modal.init();
 const tooltip = initToolTip("[data-tooltip=tooltip]");
 tooltip.init();
 
+const fetchAnimais = initFetchAnimais("./animais-api.json");
+fetchAnimais.init();
+
 animarAoScroll();
 intiDropDownMenu();
 initMenuMobile();
 initFuncionamento();
 initFetchBitcoin();
-initFetchAnimais();
