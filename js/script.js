@@ -51,5 +51,7 @@ const dropdownMenu = intiDropDownMenu("[data-dropdown]");
 dropdownMenu.init();
 
 const menuMobile = initMenuMobile('[data-menu="button"]', '[data-menu="list"]');
-initFuncionamento();
 menuMobile.init();
+
+const funcionamento = initFuncionamento("[data-semana]", "aberto");
+funcionamento.init();
