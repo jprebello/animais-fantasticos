@@ -1,4 +1,9 @@
-export default function initMenuMobile() {
+export default function initMenuMobile(button, list) {
+  const menuButton = document.querySelector(button);
+  const menuList = document.querySelector(list);
+  const eventos = ["click", "touchstart"];
+
+  // Se o usuário clicar em qualquer parte do html que não seja o menu-mobile, este irá sumir.
   function outsideClick(element, events, callback) {
     const html = document.documentElement;
     const outside = "data-outside";
@@ -22,10 +27,8 @@ export default function initMenuMobile() {
       element.setAttribute(outside, "");
     }
   }
-  const menuButton = document.querySelector('[data-menu="button"]');
-  const menuList = document.querySelector('[data-menu="list"]');
-  const eventos = ["click", "touchstart"];
 
+  // Ao clicar no menu-button o usuário irá abrir o menu-list.
   function openMenu() {
     menuList.classList.add("active");
     menuButton.classList.add("active");
@@ -35,9 +38,23 @@ export default function initMenuMobile() {
     });
   }
 
-  if (menuButton && menuList) {
-    eventos.forEach((evento) => {
-      menuButton.addEventListener(evento, openMenu);
-    });
+  // Adiciona os eventos ao botao e ao menu.
+  function addMenuMobileEvents() {
+    if (menuButton && menuList) {
+      eventos.forEach((evento) => {
+        menuButton.addEventListener(evento, openMenu);
+      });
+    }
   }
+
+  // Ativa a função
+  function init() {
+    addMenuMobileEvents();
+  }
+
+  return {
+    init,
+    outsideClick,
+    openMenu,
+  };
 }

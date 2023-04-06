@@ -50,5 +50,6 @@ animarScroll.init();
 const dropdownMenu = intiDropDownMenu("[data-dropdown]");
 dropdownMenu.init();
 
-initMenuMobile();
+const menuMobile = initMenuMobile('[data-menu="button"]', '[data-menu="list"]');
 initFuncionamento();
+menuMobile.init();
