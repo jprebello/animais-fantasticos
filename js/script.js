@@ -38,13 +38,17 @@ tooltip.init();
 const fetchAnimais = initFetchAnimais("./animais-api.json");
 fetchAnimais.init();
 
-const fetchBitcoin = initFetchBitcoin("https://blockchain.info/ticker", ".btc-preco");
+const fetchBitcoin = initFetchBitcoin(
+  "https://blockchain.info/ticker",
+  ".btc-preco"
+);
 fetchBitcoin.init();
 
 const animarScroll = animarAoScroll("[data-anime='scroll']");
 animarScroll.init();
 
-intiDropDownMenu();
+const dropdownMenu = intiDropDownMenu("[data-dropdown]");
+dropdownMenu.init();
+
 initMenuMobile();
 initFuncionamento();
-

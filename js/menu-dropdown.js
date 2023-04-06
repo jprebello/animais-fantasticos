@@ -1,6 +1,7 @@
-export default function intiDropDownMenu() {
-  const dropdownMenus = document.querySelectorAll("[data-dropdown]");
+export default function intiDropDownMenu(dropdownMenu) {
+  const dropdownMenus = document.querySelectorAll(dropdownMenu);
 
+  // Se o usuário clicar em qualquer parte do html que não seja o menu-dropdown, este irá sumir.
   function outsideClick(element, callback) {
     const html = document.documentElement;
     const outside = "data-outside";
@@ -19,6 +20,7 @@ export default function intiDropDownMenu() {
     }
   }
 
+  // Previne o event de mandar o usuário para outra página e faz com que o menu fique fixo.
   function handleClick(event) {
     event.preventDefault();
     this.classList.add("active");
@@ -27,10 +29,23 @@ export default function intiDropDownMenu() {
     });
   }
 
-  if (dropdownMenus.length) {
-    dropdownMenus.forEach((item) => {
-      item.addEventListener("click", handleClick);
-      item.addEventListener("touchstart", handleClick);
-    });
+  // Ativa a função handleClick quando o usuário clicar no elemento.
+  function addDropdownMenusEvent() {
+    if (dropdownMenus.length) {
+      dropdownMenus.forEach((item) => {
+        item.addEventListener("click", handleClick);
+      });
+    }
   }
+
+  // Ativa a função
+  function init() {
+    addDropdownMenusEvent();
+  }
+
+  return {
+    init,
+    handleClick,
+    outsideClick,
+  };
 }
