@@ -1,6 +1,8 @@
+import debounce from "./debounce.js";
+
 export default function animarAoScroll(sessoes) {
   const sections = document.querySelectorAll(sessoes);
-  const windowMetade = window.innerHeight * 0.6;
+  const windowMetade = window.innerHeight * 0.8;
 
   // Retorna um objeto com a sessão e sua distancia do topo da página - 60% da vh
   function getDistance() {
@@ -27,11 +29,14 @@ export default function animarAoScroll(sessoes) {
     });
   }
 
+  // Variável que recebe o retorna da função de debounce
+  const debouncedScroll = debounce(checkDistance, 50);
+
   // Ativa função
   function init() {
     if (sections.length) {
       checkDistance();
-      window.addEventListener("scroll", checkDistance);
+      window.addEventListener("scroll", debouncedScroll);
     }
   }
 
