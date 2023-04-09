@@ -9,6 +9,7 @@ import initFuncionamento from "./funcionamento.js";
 import initFetchBitcoin from "./fetch-bitcoin.js";
 import initFetchAnimais from "./fetch-animais.js";
 import initToolTip from "./tooltip.js";
+import initSlide from "./slide.js";
 
 const menuSmooth = smoothMenu('[data-menu="list"] a[href^="#"]');
 menuSmooth.init();
@@ -55,3 +56,6 @@ menuMobile.init();
 
 const funcionamento = initFuncionamento("[data-semana]", "aberto");
 funcionamento.init();
+
+const slide = initSlide();
+slide.init();
