@@ -29,7 +29,8 @@ export default function initMenuMobile(button, list) {
   }
 
   // Ao clicar no menu-button o usuário irá abrir o menu-list.
-  function openMenu() {
+  function openMenu(event) {
+    event.preventDefault();
     menuList.classList.add("active");
     menuButton.classList.add("active");
     outsideClick(menuList, eventos, () => {
